@@ -1,0 +1,3 @@
+*** A bunch of useful aliases/scripts ***
+
+alias cleannmap='read'

@@ -1,0 +1,26 @@
+# Nmap 7.91 scan initiated Thu Jul 15 13:15:00 2021 as: nmap -sC -sV -p22,445,3689 -oN ./nmap_default 192.168.0.13
+Nmap scan report for 192.168.0.13
+Host is up (0.0082s latency).
+
+PORT     STATE SERVICE       VERSION
+22/tcp   open  ssh           OpenSSH 8.1 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 5f:a8:21:13:c8:08:54:8c:de:66:92:1a:3f:8d:ef:97 (RSA)
+|   256 76:0c:8f:7d:f4:da:69:b6:ed:fc:17:ca:0f:3e:fb:dc (ECDSA)
+|_  256 2c:39:7e:00:8b:12:83:98:84:28:f3:3c:aa:58:65:66 (ED25519)
+445/tcp  open  microsoft-ds?
+3689/tcp open  daap          Apple iTunes DAAP 13.1.5.74
+Service Info: OS: OS X
+
+Host script results:
+|_clock-skew: -3m51s
+|_nbstat: NetBIOS name: MACBOOKAIR-5702, NetBIOS user: <unknown>, NetBIOS MAC: 38:f9:d3:2c:57:02 (Apple)
+| smb2-security-mode: 
+|   2.02: 
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2021-07-15T17:11:36
+|_  start_date: N/A
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Thu Jul 15 13:15:27 2021 -- 1 IP address (1 host up) scanned in 27.32 seconds

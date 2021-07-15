@@ -1,0 +1,31 @@
+#!/bin/bash
+# Script performs initial full port scan and outputs ports in CSV format into file
+# Script then runs default scripts against IP
+# Specific script scans can be later run with ports from file
+
+port_file='./nmap/port_list'
+out_file='./nmap/nmap_default'
+
+read -p 'IP: ' ip
+read -p 'Initial scan options?: ' options
+echo
+
+ports=$(nmap $options $ip | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//)
+
+if [ -z "$ports" ]
+then
+    echo 'No ports found at IP: ' $ip
+    echo 'Scanned with these options: "' $options '"'
+    echo 'Check if host is up with ping/normal nmap' 
+    echo 'Alternatively use -Pn or --privileged option'
+    exit 0
+fi
+
+mkdir -p nmap
+echo 'Writing ' $ports ' to ' $port_file
+echo $ports > $port_file
+
+echo 'Scanning ' $ip ' on ports ' $ports
+echo
+nmap -sC -sV -p$ports -oN $out_file $ip
+exit 1
